@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kingstar.indicatorservice.mapper.ScreenSettingMapper">
+
+
+    <select id="queryAll"  resultType="com.kingstar.indicatorservice.entity.ScreenSetting">
+        select
+        id,
+        DATA_STATUS dataStatus,
+        to_char(create_time, 'yyyy-MM-dd hh24:mi:ss') createTime,
+        to_char(MODIFY_TIME, 'yyyy-MM-dd hh24:mi:ss') modifyTime,
+        name,
+        param,
+        drag,
+        style,
+        data
+        FROM SCREENSETTING  where DATA_STATUS=1
+
+    </select>
+
+
+    <select id="queryOne"  parameterType="com.kingstar.indicatorservice.entity.ScreenSetting" resultType="com.kingstar.indicatorservice.entity.ScreenSetting">
+        select
+        id,
+        DATA_STATUS dataStatus,
+        to_char(create_time, 'yyyy-MM-dd hh24:mi:ss') createTime,
+        to_char(MODIFY_TIME, 'yyyy-MM-dd hh24:mi:ss') modifyTime,
+        name,
+        param,
+        drag,
+        style,
+        data
+        FROM SCREENSETTING where DATA_STATUS=1
+        and id = #{id}
+
+    </select>
+
+</mapper>

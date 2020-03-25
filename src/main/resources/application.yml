@@ -1,0 +1,59 @@
+server:
+  port: 9090
+
+
+spring:
+  application:
+    name: monitor-indicatorservice
+  cloud:
+    zookeeper:
+      connect-string: 10.253.46.47:2181
+      discovery:
+        register: true
+  datasource:
+    #    url: jdbc:mysql://10.253.46.159:3306/mn_alarm?useUnicode=true&characterEncoding=UTF-8&useSSL=false&userAffectRows=true&allowMultiQueries=true
+    #    username: kingstar
+    #    password: kingstar
+    #    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:oracle:thin:@10.253.46.151:1521:orcl
+    username: indicatorservice
+    password: indicatorservice
+    driver-class-name: oracle.jdbc.OracleDriver
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      maximum-pool-size: 15
+      minimum-idle: 10
+      auto-commit: true
+      idle-timeout: 600000
+      connection-timeout: 6000
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+
+#redis cluster config
+redis:
+  cluster:
+    timeOut: 7200
+    soTimeOut: 7200
+    maxAttempts: 6
+    maxIdle: 200
+    maxWaitMillis: 5000
+    nodes:
+      - 192.168.187.131:7000
+      - 192.168.187.131:7001
+      - 192.168.187.131:7002
+      - 192.168.187.131:8001
+      - 192.168.187.131:8002
+      - 192.168.187.131:8003
+
+
+customize:
+  prefix:
+    expire_time: 60
+    Oriental_Securities: Oriental_Securities
+    # 1插入  2更新
+    operate_is_insert: 2
+
+
+logging:
+  config: classpath:log4j2.yml
