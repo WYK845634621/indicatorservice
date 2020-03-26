@@ -5,6 +5,7 @@ import com.kingstar.indicatorservice.entity.ScreenSetting;
 import com.kingstar.indicatorservice.mapper.ScreenSettingMapper;
 import com.kingstar.indicatorservice.service.ScreenSettingService;
 import com.kingstar.indicatorservice.vo.ResultVo;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,10 +24,10 @@ import java.util.UUID;
  * @Date 2020/2/17 9:22
  */
 @Service
+@Slf4j
 public class ScreenSettingServiceImpl extends ServiceImpl<ScreenSettingMapper, ScreenSetting> implements ScreenSettingService {
 
 
-    private static Log logger = LogFactory.getLog(ScreenSettingServiceImpl.class);
 
     @Autowired
     private ScreenSettingMapper screenSettingMapper;
@@ -39,12 +40,12 @@ public class ScreenSettingServiceImpl extends ServiceImpl<ScreenSettingMapper, S
             screenSetting.setCreateTime(new Date());
             screenSetting.setModifyTime(new Date());
             screenSetting.setDataStatus(1);
-            logger.info("serviceimpl add...");
+            log.info("serviceimpl add...");
             screenSettingMapper.insert(screenSetting);
             resultVo.setCode(ResultVo.CODE_SUCCESS);
             resultVo.setMsg(ResultVo.MSG_SUCCESS);
         }catch (Exception e){
-            logger.error("error in ScreenSettingServiceImpl.addOne",e);
+            log.error("error in ScreenSettingServiceImpl.addOne",e);
             resultVo.setCode(ResultVo.CODE_FAIL);
             resultVo.setMsg(ResultVo.MSG_FAIL);
         }
@@ -66,7 +67,7 @@ public class ScreenSettingServiceImpl extends ServiceImpl<ScreenSettingMapper, S
             resultVo.setCode(ResultVo.CODE_SUCCESS);
             resultVo.setMsg(ResultVo.MSG_SUCCESS);
         }catch (Exception e){
-            logger.error("error in ScreenSettingServiceImpl.queryAll",e);
+            log.error("error in ScreenSettingServiceImpl.queryAll",e);
             resultVo.setCode(ResultVo.CODE_FAIL);
             resultVo.setMsg(ResultVo.MSG_FAIL);
         }
@@ -89,7 +90,7 @@ public class ScreenSettingServiceImpl extends ServiceImpl<ScreenSettingMapper, S
             resultVo.setCode(ResultVo.CODE_SUCCESS);
             resultVo.setMsg(ResultVo.MSG_SUCCESS);
         }catch (Exception e){
-            logger.error("error in ScreenSettingServiceImpl.updateOne",e);
+            log.error("error in ScreenSettingServiceImpl.updateOne",e);
             resultVo.setCode(ResultVo.CODE_FAIL);
             resultVo.setMsg(ResultVo.MSG_FAIL);
         }
@@ -110,7 +111,7 @@ public class ScreenSettingServiceImpl extends ServiceImpl<ScreenSettingMapper, S
             resultVo.setCode(ResultVo.CODE_SUCCESS);
             resultVo.setMsg(ResultVo.MSG_SUCCESS);
         }catch (Exception e){
-            logger.error("error in ScreenSettingServiceImpl.queryOne",e);
+            log.error("error in ScreenSettingServiceImpl.queryOne",e);
             resultVo.setCode(ResultVo.CODE_FAIL);
             resultVo.setMsg(ResultVo.MSG_FAIL);
         }

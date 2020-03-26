@@ -5,11 +5,6 @@ server:
 spring:
   application:
     name: monitor-indicatorservice
-  cloud:
-    zookeeper:
-      connect-string: 10.253.46.47:2181
-      discovery:
-        register: true
   datasource:
     #    url: jdbc:mysql://10.253.46.159:3306/mn_alarm?useUnicode=true&characterEncoding=UTF-8&useSSL=false&userAffectRows=true&allowMultiQueries=true
     #    username: kingstar
@@ -47,7 +42,7 @@ redis:
       - 192.168.187.131:8003
 
 
-customize:
+custom:
   prefix:
     expire_time: 60
     Oriental_Securities: Oriental_Securities

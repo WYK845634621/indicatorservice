@@ -94,18 +94,6 @@
         </dependency>
 
 
-        <!--    使用zookeeper作为注册中心-->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-zookeeper-discovery</artifactId>
-            <version>2.1.4.RELEASE</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-starter-logging</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
 
 
         <!--        redis集群-->

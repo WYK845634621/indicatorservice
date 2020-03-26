@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kingstar.indicatorservice.mapper.InstructionMapper">
+
+
+    <select id="queryOne" parameterType="com.kingstar.indicatorservice.entity.Instruction" resultType="com.kingstar.indicatorservice.entity.Instruction">
+         select
+            id,
+            DATA_STATUS dataStatus,
+            to_char(create_time, 'yyyy-MM-dd hh24:mi:ss') createTime,
+            to_char(MODIFY_TIME, 'yyyy-MM-dd hh24:mi:ss') modifyTime,
+            pre,
+            remark
+         FROM instruction where  DATA_STATUS=1
+        <if test="id != null  and id != ''">
+            and id = #{id}
+        </if>
+
+        <if test="pre != null  and pre != ''">
+            and pre =#{pre}
+        </if>
+
+    </select>
+
+    <select id="queryOneById" parameterType="com.kingstar.indicatorservice.entity.Instruction" resultType="com.kingstar.indicatorservice.entity.Instruction">
+        select
+        id,
+        DATA_STATUS dataStatus,
+        to_char(create_time, 'yyyy-MM-dd hh24:mi:ss') createTime,
+        to_char(MODIFY_TIME, 'yyyy-MM-dd hh24:mi:ss') modifyTime,
+        pre,
+        remark
+        FROM instruction where  DATA_STATUS=1
+            and id = #{id}
+
+    </select>
+
+
+    <select id="queryAll"  resultType="com.kingstar.indicatorservice.pojo.InstructionPojo">
+        select
+        i.id,
+        i.DATA_STATUS dataStatus,
+        to_char(i.create_time, 'yyyy-MM-dd hh24:mi:ss') createTime,
+        to_char(i.MODIFY_TIME, 'yyyy-MM-dd hh24:mi:ss') modifyTime,
+        i.pre,
+		w.suf,
+        i.remark
+        FROM instruction i  join WORDBOOK w on i.PRE = w.PRE and i.DATA_STATUS=1 and w.DATA_STATUS =1
+    </select>
+
+
+
+<!--    <update id="updateOne" parameterType="com.kingstar.indicatorservice.entity.Instruction">-->
+<!--        UPDATE instruction-->
+<!--        set-->
+<!--            MODIFY_TIME = #{modifyTime},-->
+<!--            PRE = #{pre},-->
+<!--            REMARK = #{remark}-->
+<!--        <if test="dataStatus != null  and dataStatus != ''">-->
+<!--            ,DATA_STATUS = #{dataStatus}-->
+<!--        </if>-->
+
+<!--        where DATA_STATUS=1-->
+<!--        <if test="id != null  and id != ''">-->
+<!--            and id = #{id}-->
+<!--        </if>-->
+
+<!--        <if test="pre != null  and pre != ''">-->
+<!--            and pre =#{pre}-->
+<!--        </if>-->
+<!--    </update>-->
+
+
+</mapper>

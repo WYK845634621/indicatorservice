@@ -30,6 +30,12 @@ public class Instruction {
     private Date modifyTime;
     private String pre;
     private String remark;
-
+    public Instruction(String id, String pre) {
+        this.dataStatus =1;
+        this.createTime = new Date();
+        this.modifyTime = new Date();
+        this.id = id;
+        this.pre = pre;
+    }
 
 }

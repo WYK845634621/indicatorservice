@@ -46,7 +46,7 @@ public class DataSourceConfig {
 
     @Bean
     public DataSource datasource(){
-        log.info("正在初始化数据库连接池.........");
+        log.info("init db pool.........");
         HikariConfig config = new HikariConfig();
         config.setJdbcUrl(url);
         config.setDriverClassName(driver);
